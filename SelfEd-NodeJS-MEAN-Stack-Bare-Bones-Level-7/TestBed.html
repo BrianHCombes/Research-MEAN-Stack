@@ -1,0 +1,95 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="BareBones">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>MEAN Stack Demonstration</title>
+        <!--<link rel="SHORTCUT ICON" href="http://www.tarptiedown.com/ttd-website/ttd-website-pics-videos/ttd-website-icon-ttd-256x256.ico">  -->
+        <link rel="SHORTCUT ICON" href="http://www.tarptiedown.com/bcombes/mean-stack-icon.ico">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+        <script src="//code.angularjs.org/snapshot/angular-sanitize.js"></script>
+</head>
+<body ng-controller="demoController as demoCtrl">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>
+                MEAN stack demonstration<br>
+            </h1>
+            <!--<div ng-bind-html="'<span>&#10004;</span>'">test</div>-->
+            <!--<div ng-bind="'<b>implicitly trusted</b>'"></div>-->
+            <div ng-bind-html="demoCtrl.test"></div>
+            <div style="font-size:30px; font-weight:bold; background-color:black; color:white;">by Brian H. Combes</div>
+            <h2>
+                <span style="color:blue;">
+                    This is an example of the various languages and frameworks I work with to assemble applications utilizing full stack disciplines
+                </span>
+            </h2>
+                <table class="table table-bordered table-striped text-left">
+                    <thead>
+                      <tr>
+                          <th class="text-center" style="width:70%; color:red;">From my resume - Languages and frameworks<br>utilized in this demo</th>
+                        <th class="text-center">YES</th>
+                        <th class="text-center">NO</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="language in demoCtrl.languages">
+                        <td>{{language}}</td>
+                       
+                      </tr>
+<!-- 
+https://stackoverflow.com/questions/32326658/how-to-allow-specific-html-entities-to-display-in-ng-repeat-while-sanitizing-the
+https://stackoverflow.com/questions/26064309/decode-html-entity-in-angular-js
+https://code.angularjs.org/snapshot/angular-sanitize.js
+-->
+                      
+                      
+                      <tr>
+                        <td>CSS3</td>
+                        <td class="text-center">&#10004;</td>
+                        <td class="text-center"></td>
+                      </tr>
+                      <tr>
+                        <td>Bootstrap</td>
+                        <td class="text-center">&#10004;</td>
+                        <td class="text-center"></td>
+                      </tr>
+                      <tr>
+                        <td>JQuery</td>
+                        <td class="text-center"></td>
+                        <td class="text-center">&#10004;</td>
+                      </tr>
+   
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    
+    
+<script>
+
+angular.module("BareBones", ['ngSanitize'])
+    .controller("demoController", [function() {
+
+        var thisBone = this;
+        
+        thisBone.languages = ["WTF!!!!"];
+        
+        thisBone.test = "&#10004;";
+                
+}])
+
+</script>        
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "MEAN_MVC_2ndTutorial",
+  "version": "1.0.0",
+  "description": "Code acompanying the [second blog post](https://hackhands.com/delving-node-js-express-web-framework/)",
+  "main": "publicMEANFserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hitman666/MEAN_MVC_2ndTutorial.git"
+  },
+  "keywords": [
+    "MEAN",
+    "MVC"
+  ],
+  "author": "Nikola Brežnjak <nikola.breznjak@gmail.com> (http://www.nikola-breznjak.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hitman666/MEAN_MVC_2ndTutorial/issues"
+  },
+  "homepage": "https://github.com/Hitman666/MEAN_MVC_2ndTutorial",
+  "dependencies": {
+    "body-parser": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "mongoose": "latest"
+  }
+}
