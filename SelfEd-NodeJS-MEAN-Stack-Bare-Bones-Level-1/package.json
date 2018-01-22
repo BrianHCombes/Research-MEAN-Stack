@@ -1,0 +1,14 @@
+{
+ "dependencies": {
+    "body-parser": "latest",
+    "connect-flash": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "mongoose": "latest",
+    "passport": "latest",
+    "passport-facebook": "latest",
+    "passport-local": "latest",
+    "passport-twitter": "latest"
+  }
+}
