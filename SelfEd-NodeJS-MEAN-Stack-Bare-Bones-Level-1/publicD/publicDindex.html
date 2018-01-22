@@ -1,0 +1,66 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="BareBones">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>SelfEd - Node/Angular App publicD</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="publicDcore.js"></script>
+
+</head>
+<body ng-controller="mainController as maincontroller">
+    <div class="container">
+
+        <div class="jumbotron text-center">
+                <h2>SelfEd: Bare Bones MEAN Stack - Level 1</h2>
+                
+                <table class="table table-bordered table-striped text-left">
+                    <thead>
+                      <tr>
+                        <th class="text-center" style="width:90%">Description</th>
+                        <th class="text-center">Covered</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>To demonstrate a RESTful GET call to a node server and return data.</td>
+                        <td>&#10004;</td>
+                      </tr>
+                      <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                      </tr>
+                      <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                      </tr>
+                    </tbody>
+                </table>
+        </div>
+
+        <div id="todo-list" class="row">
+            <div class="col-sm-12 text-center">
+                <div ng-repeat="baredata in maincontroller.bareData" class="panel panel-default">
+                    <span style="font-size:1.5em">Should see returned data (in red) below:</span><br>
+                    <span style="color:red"><b>{{baredata.msg}}</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
