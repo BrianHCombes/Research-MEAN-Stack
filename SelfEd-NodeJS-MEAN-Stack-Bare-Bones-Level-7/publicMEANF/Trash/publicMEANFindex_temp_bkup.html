@@ -1,0 +1,204 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="BareBones">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>MEAN Stack Demonstration</title>
+        <!--<link rel="SHORTCUT ICON" href="http://www.tarptiedown.com/ttd-website/ttd-website-pics-videos/ttd-website-icon-ttd-256x256.ico">  -->
+        <link rel="SHORTCUT ICON" href="http://www.tarptiedown.com/bcombes/mean-stack-icon.ico">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+        <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+        <script src="//code.angularjs.org/snapshot/angular-sanitize.js"></script>
+        <script src="../app/controllers-for-client/publicMEANFcore.js"></script>
+	<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>-->
+ 
+<style>
+
+th
+{
+font-size:16px;    
+}    
+    
+</style>        
+        
+        
+</head>
+<body ng-controller="demoController as demoCtrl">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>
+                MEAN stack demonstration<br>
+            </h1>
+            <div style="font-size:30px; font-weight:bold; background-color:black; color:white; border-radius:7px;">by Brian H. Combes</div>
+            <h4>
+                <span style="color:blue;">
+                    This is an example of the various languages and frameworks I work with to assemble applications utilizing full stack disciplines
+                </span>
+            </h4>
+                <table class="table table-bordered table-striped text-left">
+                    <thead>
+                      <tr>
+                        <th class="text-right" style="width:15%; color:red;">Language /<br> Framework</th>
+                        <th class="text-center" style="width:5%;">YES</th>
+                        <th class="text-center" style="width:5%;">NO</th>
+                        <th class="text-right" style="width:15%; color:red;">Language /<br> Framework</th>
+                        <th class="text-center" style="width:5%;">YES</th>
+                        <th class="text-center" style="width:5%;">NO</th>
+                        <th class="text-right" style="width:15%; color:red;">Language /<br> Framework</th>
+                        <th class="text-center" style="width:5%;">YES</th>
+                        <th class="text-center" style="width:5%;">NO</th>
+                        <th class="text-right" style="width:15%; color:red;">Language /<br> Framework</th>
+                        <th class="text-center" style="width:5%;">YES</th>
+                        <th class="text-center" style="width:5%;">NO</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="language in demoCtrl.languages" style="font-size:14px; color:blue;">
+                        <td class="text-right">{{language.lang1}}</td>
+                        <td class="text-center" ng-bind-html="language.yes1"></td>
+                        <td class="text-center" ng-bind-html="language.no1"></td>
+                        <td class="text-right">{{language.lang2}}</td>
+                        <td class="text-center" ng-bind-html="language.yes2"></td>
+                        <td class="text-center" ng-bind-html="language.no2"></td>
+                        <td class="text-right">{{language.lang3}}</td>
+                        <td class="text-center" ng-bind-html="language.yes3"></td>
+                        <td class="text-center" ng-bind-html="language.no3"></td>
+                        <td class="text-right">{{language.lang4}}</td>
+                        <td class="text-center" ng-bind-html="language.yes4"></td>
+                        <td class="text-center" ng-bind-html="languag.no4"></td>
+                      </tr>
+
+                    </tbody>
+                </table>
+        </div>
+        <table class="table table-striped" >
+            <thead style="font-size:24px;">
+                <tr>
+                    <th>Data Field 1</th>
+                    <th>Data Field 2</th>
+                </tr>
+            </thead>
+            <tbody style="color:red;">
+                <tr ng-repeat="baredata in demoCtrl.bareData">
+                    <td class="col-sm-6">{{baredata.msgA}}</td>
+                    <td class="col-sm-6">{{baredata.msgB}}</td>
+                </tr>
+            </tbody>   
+        </table>
+        
+        <div class="row"> <!--------------------- First row ---------------------->
+            <div class="col-sm-4">
+                <button ng-click="demoCtrl.getAllData()" style="width:100%; margin-bottom:10px;">GET All Data <span ng-show="demoCtrl.checkGet">&#10004;</span></button><br> 
+                <button ng-click="demoCtrl.getDoc()" style="width:100%; margin-bottom:10px;">&#9660; GET Data by Query &#9660;<span ng-show="demoCtrl.checkGet">&#10004;</span></button><br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" ng-model="demoCtrl.getDocRadioBtn" value="field1" checked> Query Data Field 1
+                    </div>    
+                    <div class="col-sm-6">    
+                        <input type="radio" ng-model="demoCtrl.getDocRadioBtn" value="field2"> Query Data Field 2
+                    </div>
+                </div> 
+                <input type="text" ng-model="demoCtrl.queryInfo" name="field1" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/>
+            </div>
+            <div class="col-sm-4">
+                <form ng-submit="demoCtrl.postData()">
+                    <button type="submit" id="submit" value="" style="width:100%">POST Data <span ng-show="demoCtrl.checkPost">&#10004;</span></button><br>
+                    <span style="color:red;"><b>Enter two fields of data</b></span><br>
+                    <div class="row">
+                        <div class="col-sm-2">Field&nbsp;1: </div>
+                        <div class="col-sm-10"><input type="text" ng-model="demoCtrl.field1" name="field1" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/></div>
+                    </div>  
+                     <div class="row" style="margin-top:5px">
+                        <div class="col-sm-2">Field&nbsp;2: </div>
+                        <div class="col-sm-10"><input type="text" ng-model="demoCtrl.field2" name="field1" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/></div>
+                    </div> 
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <!--<button ng-click="demoCtrl.deleteData()" style="width:100%">DELETE Data: <span ng-show="demoCtrl.checkDelete">&#10004;</span></button> -->
+                <form ng-submit="demoCtrl.deleteData()">
+                    <button type="submit" id="submit" value="" style="width:100%">DELETE Data <span ng-show="demoCtrl.checkDelete">&#10004;</span></button><br>
+                    <span style="color:red;"><b>Select Field and enter data to delete</b></span><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input type="radio" ng-model="demoCtrl.radioBtn" value="field1" checked> Field 1
+                        </div>    
+                        <div class="col-sm-3">    
+                            <input type="radio" ng-model="demoCtrl.radioBtn" value="field2"> Field 2
+                        </div>
+                    </div> 
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-sm-2">Data:</div>
+                        <div class="col-sm-10"><input type="text" ng-model="demoCtrl.dataToDelete" name="dataToDelete" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/></div>
+                    </div> 
+                </form>
+            </div>
+        </div>
+        <div class="row"> <!------------------------ This is a new row ----------------------------->
+            <div class="col-sm-4">
+                <div class="row">
+                    <form>
+                        <div>
+                            <div class="col-sm-5">
+                                <input type="radio" ng-model="demoCtrl.viaBtn1" value="viaUrlParam"> via URL param
+                            </div>    
+                            <div class="col-sm-7">    
+                                <input type="radio" ng-model="demoCtrl.viaBtn1" value="viaReqQuery"> via URL req.query Obj 
+                            </div>
+                        </div>    
+                    </form>    
+                </div> 
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <form>
+                        <div>
+                            <div class="col-sm-5">
+                                <input type="radio" ng-model="demoCtrl.viaBtn2" value="viaUrlParam"> via URL param
+                            </div>    
+                            <div class="col-sm-5">    
+                                <input type="radio" ng-model="demoCtrl.viaBtn2" value="viaReqQuery"> via Config Obj 
+                            </div>
+                        </div>    
+                    </form>    
+                </div> 
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <form>
+                        <div>
+                            <div class="col-sm-5">
+                                <input type="radio" ng-model="demoCtrl.viaBtn3" value="viaUrlParam"> via URL param
+                            </div>    
+                            <div class="col-sm-7">    
+                                <input type="radio" ng-model="demoCtrl.viaBtn3" value="viaReqQuery"> via Req query 
+                            </div>
+                        </div>    
+                    </form>    
+                </div> 
+            </div>
+        </div>    
+            
+        
+        <div>Object to delete &nbsp;&nbsp;&nbsp;&nbsp;----->&nbsp;&nbsp;&nbsp;&nbsp; {{demoCtrl.dataD1}} &nbsp;&nbsp;&nbsp;&nbsp; {{demoCtrl.dataD2}}</div>
+        <div>Query document object to find:&nbsp;&nbsp;----->&nbsp;&nbsp;{{demoCtrl.dataQD}}</div>
+        <div>Query document object to find and is stringified is:&nbsp;&nbsp;----->&nbsp;&nbsp;{{demoCtrl.queryS}}</div>
+        <div>Received Data is: &nbsp;&nbsp;----->&nbsp;&nbsp;{{demoCtrl.dataR}}</div>
+        <div>Test is: &nbsp;&nbsp;----->&nbsp;&nbsp;{{demoCtrl.testmsg1}}</div>
+        <div>Test is: &nbsp;&nbsp;----->&nbsp;&nbsp;{{demoCtrl.testmsg2}}</div>
+        
+    </div>
+    <div style="height:100px;"></div>
+ 
+</body>
+</html>

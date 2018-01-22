@@ -1,0 +1,185 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="BareBones">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>SelfEd - Node/Angular App publicMEANE</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+        <!--<script src="./publicMEANEcore.js"></script>-->
+        <!--<script src="./test2Core.js"></script>-->
+        
+        <!--<script src="//code.angularjs.org/snapshot/angular.min.js"></script>-->
+        <!--<script src="//code.angularjs.org/snapshot/angular-sanitize.js"></script>-->
+        
+        <script src="../app/controllers-for-client/publicMEANFcoreA.js"></script>
+        <!--<script src="C:/School/SelfEd/SelfEd-NodeJS-MEAN-Stack-Bare-Bones-Level-2/public_html/publicMEANE/publicMEANEcore.js"></script>-->
+        <!--<script src="C:\School\SelfEd\SelfEd-NodeJS-MEAN-Stack-Bare-Bones-Level-2\public_html\publicMEANE\publicMEANEcore.js"></script>-->
+</head>
+<body ng-controller="mainController as mainc">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h2>
+                SelfEd: Bare Bones MEAN Stack - Level 6 - From publicMEANE folder <br><br>
+                <span style="color:blue;">
+                    MEANE in MEANF<br>
+                  
+                </span>
+            </h2>
+                <table class="table table-bordered table-striped text-left">
+                    <thead>
+                      <tr>
+                        <th class="text-center" style="width:90%">Objective of this SelfEd</th>
+                        <th class="text-center">Covered</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>To demonstrate full stack operations with the most common HTTP RESTful services.</td>
+                        <td class="text-center">&#10004;</td>
+                      </tr>
+                    </tbody>
+                </table>
+        </div>
+        <table class="table table-striped" >
+            <thead style="font-size:24px;">
+                <tr>
+                    <th>Data Field 1</th>
+                    <th>Data Field 2</th>
+                </tr>
+            </thead>
+            <tbody style="color:red;">
+                <!-- 
+                <tr>
+                    <td class="col-sm-6">Anything?: {{mainc.dataR[0].msgA}}</td>
+                    <td class="col-sm-6">Anything?: {{mainc.dataR[0].msgB}}</td>
+                </tr>
+                -->
+                <tr ng-repeat="baredata in mainc.bareData">
+                    <td class="col-sm-6">{{baredata.msgA}}</td>
+                    <td class="col-sm-6">{{baredata.msgB}}</td>
+                </tr>
+            </tbody>   
+        </table>
+        
+        <div class="row"> <!--------------------- First row ---------------------->
+            <div class="col-sm-4">
+                <button ng-click="mainc.getAllData()" style="width:100%; margin-bottom:10px;">GET All Data <span ng-show="mainc.checkGet">&#10004;</span></button><br> 
+                <button ng-click="mainc.getDoc()" style="width:100%; margin-bottom:10px;">&#9660; GET Data by Query &#9660;<span ng-show="mainc.checkGet">&#10004;</span></button><br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="radio" ng-model="mainc.getDocRadioBtn" value="field1" checked> Query Data Field 1
+                    </div>    
+                    <div class="col-sm-6">    
+                        <input type="radio" ng-model="mainc.getDocRadioBtn" value="field2"> Query Data Field 2
+                    </div>
+                </div> 
+                <input type="text" ng-model="mainc.queryInfo" name="field1" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/>
+            </div>
+            <div class="col-sm-4">
+                <form ng-submit="mainc.postData()">
+                    <button type="submit" id="submit" value="" style="width:100%">POST Data <span ng-show="mainc.checkPost">&#10004;</span></button><br>
+                    <span style="color:red;"><b>Enter two fields of data</b></span><br>
+                    <div class="row">
+                        <div class="col-sm-2">Field&nbsp;1: </div>
+                        <div class="col-sm-10"><input type="text" ng-model="mainc.field1" name="field1" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/></div>
+                    </div>  
+                     <div class="row" style="margin-top:5px">
+                        <div class="col-sm-2">Field&nbsp;2: </div>
+                        <div class="col-sm-10"><input type="text" ng-model="mainc.field2" name="field1" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/></div>
+                    </div> 
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <!--<button ng-click="mainc.deleteData()" style="width:100%">DELETE Data: <span ng-show="mainc.checkDelete">&#10004;</span></button> -->
+                <form ng-submit="mainc.deleteData()">
+                    <button type="submit" id="submit" value="" style="width:100%">DELETE Data <span ng-show="mainc.checkDelete">&#10004;</span></button><br>
+                    <span style="color:red;"><b>Select Field and enter data to delete</b></span><br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input type="radio" ng-model="mainc.radioBtn" value="field1" checked> Field 1
+                        </div>    
+                        <div class="col-sm-3">    
+                            <input type="radio" ng-model="mainc.radioBtn" value="field2"> Field 2
+                        </div>
+                    </div> 
+                    <div class="row" style="margin-top:5px">
+                        <div class="col-sm-2">Data:</div>
+                        <div class="col-sm-10"><input type="text" ng-model="mainc.dataToDelete" name="dataToDelete" style="width:100%; background-color:#F0F0FF; border:1px solid black;"/></div>
+                    </div> 
+                </form>
+            </div>
+        </div>
+        <div class="row"> <!------------------------ This is a new row ----------------------------->
+            <div class="col-sm-4">
+                <div class="row">
+                    <form>
+                        <div>
+                            <div class="col-sm-5">
+                                <input type="radio" ng-model="mainc.viaBtn1" value="viaUrlParam"> via URL param
+                            </div>    
+                            <div class="col-sm-7">    
+                                <input type="radio" ng-model="mainc.viaBtn1" value="viaReqQuery"> via URL req.query Obj 
+                            </div>
+                        </div>    
+                    </form>    
+                </div> 
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <form>
+                        <div>
+                            <div class="col-sm-5">
+                                <input type="radio" ng-model="mainc.viaBtn2" value="viaUrlParam"> via URL param
+                            </div>    
+                            <div class="col-sm-5">    
+                                <input type="radio" ng-model="mainc.viaBtn2" value="viaReqQuery"> via Config Obj 
+                            </div>
+                        </div>    
+                    </form>    
+                </div> 
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <form>
+                        <div>
+                            <div class="col-sm-5">
+                                <input type="radio" ng-model="mainc.viaBtn3" value="viaUrlParam"> via URL param
+                            </div>    
+                            <div class="col-sm-7">    
+                                <input type="radio" ng-model="mainc.viaBtn3" value="viaReqQuery"> via Req query 
+                            </div>
+                        </div>    
+                    </form>    
+                </div> 
+            </div>
+        </div>    
+            
+        
+        <div>Object to delete &nbsp;&nbsp;&nbsp;&nbsp;----->&nbsp;&nbsp;&nbsp;&nbsp; {{mainc.dataD1}} &nbsp;&nbsp;&nbsp;&nbsp; {{mainc.dataD2}}</div>
+        <div>Query document object to find:&nbsp;&nbsp;----->&nbsp;&nbsp;{{mainc.dataQD}}</div>
+        <div>Query document object to find and is stringified is:&nbsp;&nbsp;----->&nbsp;&nbsp;{{mainc.queryS}}</div>
+        <div>Received Data is: &nbsp;&nbsp;----->&nbsp;&nbsp;{{mainc.dataR}}</div>
+        <div>Test is: &nbsp;&nbsp;----->&nbsp;&nbsp;{{mainc.testmsg1}}</div>
+        <div>Test is: &nbsp;&nbsp;----->&nbsp;&nbsp;{{mainc.testmsg2}}</div>
+        
+    </div>
+    <div style="height:100px;"></div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="BareBones">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>SelfEd - Node/Angular App publicMEANF</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<!--<script src="./app/controllers-for-client/publicMEANFcore.js"></script>-->
+        <script src="publicMEANFcore.js"></script>
+        <!--<script src="C:/School/SelfEd/SelfEd-NodeJS-MEAN-Stack-Bare-Bones-Level-2/public_html/publicMEANF/publicMEANFcore.js"></script>-->
+        <!--<script src="C:\School\SelfEd\SelfEd-NodeJS-MEAN-Stack-Bare-Bones-Level-2\public_html\publicMEANF\publicMEANFcore.js"></script>-->
+</head>
+<body ng-controller="mainController as maincontroller">
+    <div class="container">
+
+        <div class="jumbotron text-center">
+                <h2>
+                    SelfEd: Bare Bones MEAN Stack - Level 3 - Moved - Double Check the Move
+                    <br> This is the desired file located in the views folder. 
+                </h2>
+                
+                <table class="table table-bordered table-striped text-left">
+                    <thead>
+                      <tr>
+                        <th class="text-center" style="width:90%">Objective of this SelfEd</th>
+                        <th class="text-center">Covered</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>To demonstrate full stack operations with the most common HTTP RESTful services.</td>
+                        <td>&#10004;</td>
+                      </tr>
+                    </tbody>
+                </table>
+        </div>
+
+        <div id="todo-list" class="row">
+            <div class="col-sm-12 text-center">
+                <div ng-repeat="baredata in maincontroller.bareData" class="panel panel-default">
+                    <span style="font-size:1.5em">Should see returned data (in red) below:</span><br>
+                    <span style="color:red"><b>{{baredata.msgA}}</b></span>
+                </div>
+            </div>
+        </div>
+        <div>{{maincontroller.testVar}}</div>
+        <button ng-click="maincontroller.testFunction()">Click To Change This: {{maincontroller.testButton}}</button>
+    </div>
+    
+<!--     
+    <script>
+    
+angular.module('BareBones', [])
+
+.controller('mainController', ['$scope','$http', function($scope, $http) {
+	
+        var bareSelf = this;
+        // callback function
+        var receiveData = function(data){
+            // bareSelf.bareData = data;
+            bareSelf.bareData = { 'msg1':{'msgA':'value1', 'msgB':'value2'} };
+        };
+        
+        bareSelf.testVar = "This is a test";
+        
+        bareSelf.testFunction = function(){
+            console.log("function reached");
+            bareSelf.testButton = "This is now changed";
+        };
+        
+        
+        
+        
+        
+        
+/*        
+        // var pathArg = '/api/publicMEANF/' + '{"msg12":{"msgA":"This msgA property value from Data Element 11 from folder publicMEANF", "msgB":"This msgB property value from Data Element 11 from folder publicMEANF"}}';
+	$http.get('/api')
+		.success(function(data) {
+			receiveData(data);
+		})
+		.error(function(data) {
+			console.log('Error: ' + data);
+		});
+*/
+
+
+}]);
+        
+    </script>    
+    
+-->    
+    
+</body>
+</html>
