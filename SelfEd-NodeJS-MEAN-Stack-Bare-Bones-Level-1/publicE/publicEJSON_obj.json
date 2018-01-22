@@ -1,0 +1,6 @@
+{
+ "msg1":{"msgA":"This msgA property value from Data Element 0 from folder publicD", "msgB":"This msgB property value from Data Element 0 from folder publicD"}, 
+ "msg2":{"msgA":"This msgA property value from Data Element 1 from folder publicD", "msgB":"This msgB property value from Data Element 1 from folder publicD"}, 
+ "msg3":{"msgA":"This mdgA property value from Data Element 2 from folder publicD", "msgB":"This msgB property value from Data Element 2 from folder publicD"}
+}
+
